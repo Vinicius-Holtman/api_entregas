@@ -1,15 +1,9 @@
-import Express from "express";
+import * as express from "express";
 import { routes } from "./routes/routes"
 
-const app = Express()
+const app = express()
 
-app.use(Express.json())
+app.use(express.json())
 app.use(routes)
-
-app.get('/', (req, res) => {
-  res.json({
-    message: "Aqui@@@"
-  })
-})
 
 app.listen(3000, () => console.log("Server is running! 🤖"))
