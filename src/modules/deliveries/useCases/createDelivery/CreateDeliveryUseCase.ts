@@ -6,7 +6,6 @@ interface ICreateDelivery {
 }
 
 export class CreateDeliveryUseCase {
-
   async execute({ id_client, item_name }: ICreateDelivery) {
     const delivery = await prisma.deliveries.create({
       data: {

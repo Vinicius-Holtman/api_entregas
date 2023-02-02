@@ -1,6 +1,5 @@
 import { prisma } from "../../../../database/prismaClient";
 
-
 interface IUpdateDeliveryman {
   id_delivery: string;
   id_deliveryman: string;

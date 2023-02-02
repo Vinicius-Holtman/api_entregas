@@ -19,7 +19,6 @@ export class AuthenticateDeliverymanUseCase {
       throw new Error("Username or password invalid!")
     }
 
-
     const passwordMatch = await compare(password, deliveryman.password)
 
     if(!passwordMatch) {
