@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { CreateClientController } from "../modules/clients/useCases/createClient/CreateClientController";
-import { AuthenticateClientController } from "../modules/accounts/authenticateUser/AuthenticateClientController";
+import { AuthenticateClientController } from "../modules/accounts/authenticateClient/AuthenticateClientController";
 import { CreateDeliverymanController } from "../modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 import { AuthenticateDeliverymanController } from "../modules/accounts/authenticateDeliveryman/AuthenticateDeliverymanController";
 import { CreateDeliveryController } from "../modules/deliveries/useCases/createDelivery/CreateDeliveryController";
+import { ensureAuthenticateClient } from "../middleware/ensureAuthenticateClient";
 
 const routes = Router()
 
@@ -18,6 +19,6 @@ routes.post("/client/authenticate", authenticateClientController.handle)
 routes.post("/deliveryman/authenticate", authenticateDeliverymanController.handle)
 routes.post("/deliveryman", deliverymanController.handle)
 
-routes.post("/delivery", deliveryController.handle)
+routes.post("/delivery", ensureAuthenticateClient, deliveryController.handle)
 
 export { routes }
